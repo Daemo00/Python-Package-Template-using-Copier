@@ -1,0 +1,40 @@
+# Questions
+package_name:
+    type: str
+    help: What is your Python package name?
+    validator: >-
+        {% if not (package_name | regex_search('(?i)^([A-Z0-9]|[A-Z0-9][A-Z0-9._-]*[A-Z0-9])$')) %}
+        The package name consists only of ASCII letters and numbers, period, underscore and hyphen.\n
+        It must start and end with a letter or number.\n
+        See https://packaging.python.org/en/latest/specifications/name-normalization/#valid-non-normalized-names.
+        {% endif %}
+author_full_name:
+    type: str
+    help: Full name of the Author
+author_email:
+    type: str
+    help: E-mail of the Author
+dependency:
+    type: str
+    help: Main dependency
+optional_dependency:
+    type: str
+    help: Optional dependency, this will allow for installation of package[extra]
+cli:
+    type: bool
+    help: Allow to invoke a CLI
+
+# Copier Settings
+_subdirectory: template
+_tasks:
+    # Remove CLI files if not needed
+    - >-
+      {% if not cli %}
+      rm src/{{package_name}}/cli.py tests/test_cli.py
+      {% endif %}
+    # Git VCS
+    - git init && git add . && git commit --message "Initial commit"
+    - pre-commit install
+    # Create virtualenv and install
+    - python3 -m venv venv
+    - venv/bin/pip install -e .

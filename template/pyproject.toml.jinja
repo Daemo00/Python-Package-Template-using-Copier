@@ -1,0 +1,44 @@
+# Specifications for this file are in https://packaging.python.org/specifications/core-metadata
+[project]
+name = "{{package_name}}"
+readme = "README.md"
+dynamic = ["version"]
+keywords = [
+  "development",
+]
+{% if author_full_name or author_email %}
+authors = [
+  { {% if author_full_name %}name = "{{author_full_name}}"{% endif %}{% if author_full_name and author_email %}, {% endif %}{% if author_email %}email = "{{author_email}}"{% endif %} },
+]
+{% endif %}
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "Programming Language :: Python :: 3",
+]
+{% if dependency %}
+dependencies = [
+  "{{dependency}}",
+]
+{% endif %}
+{% if optional_dependency %}
+[project.optional-dependencies]
+extra = [
+  "check-manifest",
+]
+{% endif %}
+{% if cli %}
+[project.scripts]
+add_number = "{{package_name}}:cli.main"
+{% endif %}
+
+[tool.setuptools_scm]
+write_to = "src/{{package_name}}/__version__.py"
+
+[build-system]
+requires = [
+  "setuptools>=45",
+  "setuptools_scm[toml]>=6.2",
+  "wheel",
+]
+build-backend = "setuptools.build_meta"
