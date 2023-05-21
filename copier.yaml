@@ -11,18 +11,23 @@ package_name:
 author_full_name:
     type: str
     help: Full name of the Author
+    default: ""
 author_email:
     type: str
     help: E-mail of the Author
+    default: ""
 dependency:
     type: str
     help: Main dependency
+    default: ""
 optional_dependency:
     type: str
     help: Optional dependency, this will allow for installation of package[extra]
+    default: ""
 cli:
     type: bool
     help: Allow to invoke a CLI
+    default: true
 
 # Copier Settings
 _subdirectory: template

@@ -1,0 +1,26 @@
+name: Test
+
+on: [push, pull_request]
+
+jobs:
+  new_package:
+    name: Generate a new package
+    strategy:
+      matrix:
+        python: ['3.11']
+        platform: [ubuntu-latest]
+    runs-on: ${{ matrix.platform }}
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python ${{ matrix.python }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python }}
+    - name: Install Copier
+      run: pip install copier pre-commit
+    - name: Init Git
+      run: |
+        git config --global user.email "you@example.com"
+        git config --global user.name "Your Name"
+    - name: Create package
+      run: copier --force --defaults --data="package_name=MyPackage" copy . MyPackage
