@@ -29,7 +29,7 @@ cli:
     help: Allow to invoke a CLI
     default: true
 
-# Copier Settings
+# Settings
 _subdirectory: template
 _tasks:
     # Remove CLI files if not needed
