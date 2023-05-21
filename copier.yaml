@@ -33,7 +33,13 @@ _tasks:
       rm src/{{package_name}}/cli.py tests/test_cli.py
       {% endif %}
     # Git VCS
-    - git init && git add . && git commit --message "Initial commit"
+    - >-  
+      if [ -e .git ]
+        then
+          git add . && git commit --message "Template Update" --no-verify
+        else
+          git init && git add . && git commit --message "Initial commit"
+      fi
     - pre-commit install
     # Create virtualenv and install
     - python3 -m venv venv
