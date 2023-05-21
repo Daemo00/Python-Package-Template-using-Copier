@@ -31,7 +31,6 @@ cli:
 
 # Copier Settings
 _subdirectory: template
-_answers_file: .copier-answers.yaml
 _tasks:
     # Remove CLI files if not needed
     - >-
