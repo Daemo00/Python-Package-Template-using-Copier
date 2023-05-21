@@ -41,7 +41,8 @@ _tasks:
     - >-
       if [ -e .git ]
         then
-          git add . && git commit --message "Template Update" --no-verify
+          git add . && git diff --quiet HEAD \
+          || git commit --message "Template Update" --no-verify
         else
           git init && git add . && git commit --message "Initial commit"
       fi
