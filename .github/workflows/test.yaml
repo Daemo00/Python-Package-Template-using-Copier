@@ -24,3 +24,7 @@ jobs:
         git config --global user.name "Your Name"
     - name: Create package
       run: copier --force --defaults --data="package_name=MyPackage" copy . MyPackage
+    - name: Check pre-commit for MyPackage
+      run: cd MyPackage && pre-commit run --all-files
+    - name: Test MyPackage
+      run: pip install tox && cd MyPackage && tox
