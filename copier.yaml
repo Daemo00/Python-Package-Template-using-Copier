@@ -39,11 +39,8 @@ _tasks:
       {% endif %}
     # Git VCS
     - >-
-      if [ -e .git ]
+      if [ ! -e .git ]
         then
-          git add . && git diff --quiet HEAD \
-          || git commit --message "Template Update" --no-verify
-        else
           git init && git add . && git commit --message "Initial commit"
       fi
     - pre-commit install

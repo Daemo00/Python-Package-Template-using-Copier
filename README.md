@@ -25,5 +25,8 @@ copier copy https://github.com/Daemo00/Python-Package-Template-using-Copier MyPa
 Update an existing Package in `MyPackage` directory with:
 
 ```shell
-copier copy https://github.com/Daemo00/Python-Package-Template-using-Copier MyPackage
+cd MyPackage
+copier update .
+pre-commit run --all-files
+git commit --all --message "Template Update"  # Check the changes and commit
 ```
