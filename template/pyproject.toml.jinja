@@ -24,7 +24,7 @@ dependencies = [
 {% if optional_dependency %}
 [project.optional-dependencies]
 extra = [
-  "check-manifest",
+  "{{optional_dependency}}",
 ]
 {% endif %}
 {% if cli %}
