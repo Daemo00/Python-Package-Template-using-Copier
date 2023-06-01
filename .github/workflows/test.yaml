@@ -28,3 +28,9 @@ jobs:
       run: cd MyPackage && pre-commit run --all-files
     - name: Test MyPackage
       run: pip install tox && cd MyPackage && tox
+    - name: Generate Documentation for MyPackage
+      run: |
+        cd MyPackage
+        pip install ".[docs]"
+        cd docs
+        make html

@@ -21,8 +21,12 @@ dependencies = [
   "{{dependency}}",
 ]
 {% endif %}
-{% if optional_dependency %}
 [project.optional-dependencies]
+docs = [
+	"sphinx",
+	"furo",
+]
+{% if optional_dependency %}
 extra = [
   "{{optional_dependency}}",
 ]
