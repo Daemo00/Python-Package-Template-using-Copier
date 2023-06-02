@@ -23,8 +23,3 @@ jobs:
       run: tox -e py,report
     - name: Codecov
       uses: codecov/codecov-action@v3
-    - name: Documentation
-      run: |
-        pip install -e ".[docs]"
-        cd docs
-        make html
