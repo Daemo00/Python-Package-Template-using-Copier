@@ -19,14 +19,14 @@ pipx install copier pre-commit
 
 Create a new Package `MyPackage` with:
 ```shell
-copier copy https://github.com/Daemo00/Python-Package-Template-using-Copier MyPackage
+copier copy --UNSAFE https://github.com/Daemo00/Python-Package-Template-using-Copier MyPackage
 ```
 
 Update an existing Package in `MyPackage` directory with:
 
 ```shell
 cd MyPackage
-copier update .
+copier update --UNSAFE .
 pre-commit run --all-files
 git commit --all --message "Template Update"  # Check the changes and commit
 ```
