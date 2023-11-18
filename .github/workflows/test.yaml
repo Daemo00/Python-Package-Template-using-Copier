@@ -26,7 +26,7 @@ jobs:
       run: |
         pipx install copier
         pipx install pre-commit
-        copier copy --UNSAFE --force --defaults --data="package_name=MyPackage" . MyPackage
+        copier copy --trust --force --defaults --data="package_name=MyPackage" . MyPackage
     - name: Check pre-commit for MyPackage
       run: cd MyPackage && pre-commit run --all-files
     - name: Test MyPackage
