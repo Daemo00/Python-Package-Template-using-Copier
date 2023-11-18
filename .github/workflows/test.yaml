@@ -7,7 +7,7 @@ jobs:
     name: Generate a new package
     strategy:
       matrix:
-        python: ['3.11']
+        python: ['3.12']
         platform: [ubuntu-latest]
     runs-on: ${{ matrix.platform }}
     steps:
