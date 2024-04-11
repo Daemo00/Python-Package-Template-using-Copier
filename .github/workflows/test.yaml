@@ -11,9 +11,9 @@ jobs:
         platform: [ubuntu-latest]
     runs-on: ${{ matrix.platform }}
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Set up Python ${{ matrix.python }}
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python }}
     - name: Allow to install Packages globally
@@ -25,6 +25,7 @@ jobs:
     - name: Create package
       run: |
         pipx install copier
+        pipx runpip copier install --upgrade setuptools
         pipx install pre-commit
         copier copy --trust --force --defaults --data="package_name=MyPackage" . MyPackage
     - name: Check pre-commit for MyPackage
