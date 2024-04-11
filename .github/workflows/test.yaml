@@ -25,6 +25,7 @@ jobs:
     - name: Create package
       run: |
         pipx install copier
+        pipx runpip copier install --upgrade setuptools
         pipx install pre-commit
         copier copy --trust --force --defaults --data="package_name=MyPackage" . MyPackage
     - name: Check pre-commit for MyPackage
