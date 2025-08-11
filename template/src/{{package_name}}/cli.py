@@ -1,4 +1,5 @@
 """CLI entry points."""
+
 import argparse
 
 from .main import add_one
